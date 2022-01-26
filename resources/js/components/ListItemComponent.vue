@@ -54,6 +54,7 @@
 }
 
 .completed {
+    font-weight: bold;
     text-decoration: line-through;
     color:red;
 }
