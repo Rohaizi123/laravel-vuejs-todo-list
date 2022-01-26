@@ -8,8 +8,8 @@
                 </div>
                 <add-form-component v-on:reloadlist="getList()"></add-form-component>
                 <list-view-component 
-                :items="items" 
-                v-on:reloadlist="getList()"
+                    :items="items" 
+                    v-on:reloadlist="getList()"
                 >
                 </list-view-component>
             </div>

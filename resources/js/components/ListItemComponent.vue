@@ -1,17 +1,17 @@
 <template>
-    <div class="todo-item mt-3">
-        <ul class="list-unstyled">
-          <li class="ui-state-default">
+<div class="todo-item mt-3">
+	<ul class="list-unstyled">	
+		<li class="ui-state-default">
             <span>
-                <input type="checkbox" 
-                v-model="item.completed"
-                @change="updateCheck()" 
-                id="defaultCheck" 
-                />
+				<input type="checkbox" 
+				v-model="item.completed"
+				@change="updateCheck()" 
+				id="defaultCheck" 
+				/>
             </span>
             <label :class="[item.completed ? 'completed' :'item']" for="defaultCheck">{{ item.name }}</label>
-            <!-- <button type="button" @click="removeItem()" class="btn btn-danger btn-sm float-md-right"><i class="fa fa-trash"></i>
-            </button> -->
+            <button type="button" @click="removeItem()" class="btn btn-danger btn-sm float-md-right"><i class="fa fa-trash"></i>
+            </button>
         </li>
     </ul>
 </div>
@@ -58,9 +58,13 @@
     color:red;
 }
 
-label,input{
+input{
     display: inline-block;
     vertical-align: middle;
+}
+
+.list-unstyled{
+	height:10px;
 }
 
 div.checker span {
