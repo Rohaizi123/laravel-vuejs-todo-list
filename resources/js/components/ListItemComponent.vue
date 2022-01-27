@@ -2,16 +2,22 @@
 <div class="todo-item mt-3">
 	<ul class="list-unstyled">	
 		<li class="ui-state-default">
-            <span>
+            <span class="mr-1">
 				<input type="checkbox" 
 				v-model="item.completed"
 				@change="updateCheck()" 
 				id="defaultCheck" 
 				/>
             </span>
-            <label :class="[item.completed ? 'completed' :'item']" for="defaultCheck">{{ item.name }}</label>
-            <button type="button" @click="removeItem()" class="btn btn-danger btn-sm float-md-right"><i class="fa fa-trash"></i>
-            </button>
+            <label :class="[item.completed ? 'todo-completed' :'todo']" for="defaultCheck">{{ item.name }}</label>
+            <div class="d-flex float-right">
+                <div class="mr-2">
+                    <label class="mr-2"><small>{{ item.created_at|formatDate }}</small></label>
+                </div>
+                <div class="ml-auto">
+                    <button type="button" @click="removeItem()" class="btn btn-danger btn-sm float-md-right"><i class="fa fa-trash"></i></button>
+                </div>
+            </div>
         </li>
     </ul>
 </div>
@@ -53,10 +59,15 @@
     background: #F0F0F0;
 }
 
-.completed {
+.todo-completed {
     font-weight: bold;
     text-decoration: line-through;
     color:red;
+    word-break:break-all;
+}
+
+.todo{
+    word-break:break-all;
 }
 
 input{
