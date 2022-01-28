@@ -7,7 +7,15 @@
 					<u>My Todo-s</u>
 				</div>
 				<add-form-component v-on:reloadlist="getList()"></add-form-component>
-				<list-view-component :items="items" v-on:reloadlist="getList()">
+				<div class="col-auto p-2 float-right">
+					<label class="">Sort</label>
+					<button v-on:click="ascending =!ascending" class="sort-button">
+						<i v-if="ascending" class="fa fa fa-sort-amount-asc text-success"></i>
+						<i v-else class="fa fa fa-sort-amount-desc text-success"></i>
+    				</button>
+				</div>
+				<br>
+				<list-view-component :items="sortTasks" v-on:reloadlist="getList()">
 				</list-view-component>
 				<span class="p-1">
                     <h6>{{ itemLefts.length }}/{{ items.length }} item left</h6>
@@ -29,6 +37,7 @@ export default {
 	data: function () {
 		return {
 			items: [],
+			ascending: true,
 		};
 	},
 	methods: {
@@ -50,6 +59,12 @@ export default {
 		itemLefts() {
 			return this.items.filter((t) => !t.completed);
 		},
+		sortTasks(){
+			if (!this.ascending) {
+				return this.items.reverse();
+			}
+			return this.items;
+		},
 	},
 };
 </script>
@@ -58,5 +73,10 @@ body {
 	background: #f8f8f8;
 	font-family: 'Open Sans', sans-serif;
 	line-height: 1.6;
+}
+.sort-button {
+	background-color: rgba(0,0,0,0);
+	border: none;
+	height: 100%;
 }
 </style>

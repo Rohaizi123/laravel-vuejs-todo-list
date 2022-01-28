@@ -1,5 +1,5 @@
 <template>
-<div class="todo-item mt-3">
+<div class="todo-item mt-3 rounded">
 	<ul class="list-unstyled">	
 		<li class="ui-state-default">
             <span class="mr-1">
@@ -53,7 +53,8 @@
 
 <style>
 .todo-item {
-    padding: 15px;
+    font-size: 16px;
+    padding: 9px;
     margin: 5px 0;
     border-radius: 0;
     background: #F0F0F0;
