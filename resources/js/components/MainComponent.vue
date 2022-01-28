@@ -7,19 +7,24 @@
 					<u>My Todo-s</u>
 				</div>
 				<add-form-component v-on:reloadlist="getList()"></add-form-component>
-				<div class="col-auto p-2 float-right">
-					<label class="">Sort</label>
-					<button v-on:click="ascending =!ascending" class="sort-button">
-						<i v-if="ascending" class="fa fa fa-sort-amount-asc text-success"></i>
-						<i v-else class="fa fa fa-sort-amount-desc text-success"></i>
-    				</button>
+				<div v-if="items != ''">
+					<div class="col-auto p-2 float-right">
+						<label class="">Sort</label>
+						<button v-on:click="ascending = !ascending" class="sort-button">
+							<i v-if="ascending" class="fa fa fa-sort-amount-asc text-success"></i>
+							<i v-else class="fa fa fa-sort-amount-desc text-success"></i>
+						</button>
+					</div>
+					<br/>
+					<list-view-component :items="sortTasks" v-on:reloadlist="getList()">
+					</list-view-component>
+					<span class="p-1">
+						<h6>{{ itemLefts.length }}/{{ items.length }} item left</h6>
+					</span>
 				</div>
-				<br>
-				<list-view-component :items="sortTasks" v-on:reloadlist="getList()">
-				</list-view-component>
-				<span class="p-1">
-                    <h6>{{ itemLefts.length }}/{{ items.length }} item left</h6>
-                </span>
+				<div v-else class="p-3 text-primary text-center mx-auto display-inline-block">
+					 <h4>No Task Added</h4>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -59,7 +64,7 @@ export default {
 		itemLefts() {
 			return this.items.filter((t) => !t.completed);
 		},
-		sortTasks(){
+		sortTasks() {
 			if (!this.ascending) {
 				return this.items.reverse();
 			}
@@ -75,7 +80,7 @@ body {
 	line-height: 1.6;
 }
 .sort-button {
-	background-color: rgba(0,0,0,0);
+	background-color: rgba(0, 0, 0, 0);
 	border: none;
 	height: 100%;
 }
