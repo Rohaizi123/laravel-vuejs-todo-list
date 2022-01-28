@@ -19,7 +19,7 @@
 					<list-view-component :items="sortTasks" v-on:reloadlist="getList()">
 					</list-view-component>
 					<span class="p-1">
-						<h6>{{ itemLefts.length }}/{{ items.length }} item left</h6>
+						<h6>{{ itemLefts.length }}/{{ items.length }} items left</h6>
 					</span>
 				</div>
 				<div v-else class="p-3 text-primary text-center mx-auto display-inline-block">
