@@ -39,7 +39,7 @@ class ItemController extends Controller
         $newItem = new Item;
         $newItem->name = $request->item["name"];
         $newItem->save();
-
+        
         return $newItem;
     }
 
@@ -86,7 +86,7 @@ class ItemController extends Controller
 
         $existingItem->save();
 
-        return $existingItem;
+        return response()->json("Task Updated Successfully");
     }
 
     /**
@@ -101,6 +101,6 @@ class ItemController extends Controller
 
         $existingItem->delete();
 
-        return "Item Deleted";
+        return response()->json("Task Deleted Successfully");
     }
 }

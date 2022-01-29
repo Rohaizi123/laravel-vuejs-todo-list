@@ -6,7 +6,7 @@
 				<div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
 					<u>My Todo-s</u>
 				</div>
-				<add-form-component v-on:reloadlist="getList()"></add-form-component>
+				<add-form-component v-on:reloadlist="getList()" :items="items"></add-form-component>
 				<div v-if="items != ''">
 					<div class="col-auto p-2 float-right">
 						<label class="">Sort</label>

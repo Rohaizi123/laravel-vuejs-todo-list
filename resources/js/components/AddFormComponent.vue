@@ -18,6 +18,10 @@
 </template>
 
 <script>
+import VueSimpleAlert from "vue-simple-alert";
+
+Vue.use(VueSimpleAlert);
+
     export default {
         data:function () {
             return {
@@ -26,21 +30,28 @@
                 }
             }
         },
+        props:['items'],
         methods: {
             addItem() {
-            if (this.item.name == '') {
-                return;
-            }
-              axios.post('api/item/store', {
-                  item: this.item
-              }).then((response) => {
-                  if (response.status == 201) {
+            if(!this.items.some(data => data.name === this.item.name)){
+                axios.post('api/item/store', {
+                    item: this.item
+                }).then((response) => {
+                    if (response.status == 201) {
                     this.item.name = "";
                     this.$emit('reloadlist');
                 }
-            }).catch((error) => {
-              console.log(error);
-          })
+                }).catch((error) => {
+                console.log(error);
+            })      
+            }else{
+                this.$fire({
+                    title: "Error",
+                    text: "Task already exist. Plese Input another task",
+                    type: "warning",
+                    showConfirmButton: true,
+				})
+            }
         },
         isDisabled() {
             return this.item.name;
